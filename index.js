@@ -1,4 +1,5 @@
 const express = require('express')
+const {db, add, remove} = require('./data/data')
 
 const server = express()
 const port = process.env.PORT || 5000
@@ -12,11 +13,12 @@ server.get('/', (req, res) => {
 })
 
 server.post('/stuff', (req, res) => {
-
+    add(req.body)
+    
 })
 
-server.delete('/stuff/:id', (req, res) => {
-
+server.delete('/stuff', (req, res) => {
+    remove('last')
 })
 
 if (!module.parent) {
